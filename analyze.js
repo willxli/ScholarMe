@@ -17,3 +17,30 @@ function analyze(text) {
 
     return result;
 }
+
+function convert_word_to_link(keyword){
+    return "<a href=\"https://scholar.google.com/scholar?as_sdt=0%2C5&q="+ keyword + "&btnG=\">" + keyword + "</a>";
+}
+
+function update_analyze_result(result){
+    var keywords = "";
+    var frequency = "";
+    result.forEach(element => {
+        keywords += convert_word_to_link(element[0]);
+        keywords += "\n";
+        frequency += element[1];
+        frequency += "\n";
+    });
+    document.getElementById("keywords").value = keywords;
+    document.getElementById("frequency").value = frequency;
+}
+
+document.getElementById("analyzeButton").onclick = function() {
+    var result = analyze(document.getElementById("textBox").value);
+    update_analyze_result(result);
+}
+
+document.getElementById("resetButton").onclick = function() {
+    document.getElementById("textBox").value = "";
+    update_analyze_result([]);
+}
