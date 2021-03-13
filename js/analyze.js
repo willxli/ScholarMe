@@ -1,6 +1,5 @@
 function analyze(text) {
     console.log("analyze");
-    console.log(text);
     if(!text) return [];
 
     var words = text.match(/\w+/g);
@@ -17,6 +16,22 @@ function analyze(text) {
         }
         return count;
     }, {});
+
+    var keys_list = Object.keys(result);
+    keys_list.forEach(curr_word => {
+        if (keys_list.includes(curr_word.slice(0, -3))) {
+            result[curr_word.slice(0, -3)] += result[curr_word];
+            delete result[curr_word];
+        }
+        else if (keys_list.includes(curr_word.slice(0, -2))) {
+            result[curr_word.slice(0, -2)] += result[curr_word];
+            delete result[curr_word];
+        }
+        else if (keys_list.includes(curr_word.slice(0, -1))) {
+            result[curr_word.slice(0, -1)] += result[curr_word];
+            delete result[curr_word];
+        }
+    });
 
     result = Object.keys(result).map(function(key){
         return [key, result[key]];
