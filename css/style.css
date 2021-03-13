@@ -7,17 +7,21 @@
 
 #analyzeButton {
     color: green;
+    border-radius: 25px;
 }
 
 #resetButton {
     color: red;
     margin-left: 100px;
+    border-radius: 25px;
+    
 }
 
 #uploadButton {
     color: blue;
     margin-left: 100px;
     padding-top: -100px;
+    border-radius: 25px;
 }
 
 .box {
