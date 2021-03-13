@@ -1,4 +1,6 @@
 function analyze(text) {
+    console.log("analyze");
+    console.log(text);
     if(!text) return [];
 
     var words = text.match(/\w+/g);
@@ -37,8 +39,8 @@ function update_analyze_result(result){
     var keywords = "";
     var frequency = "";
     // TODO: we can have the user to set the number of words to be displayed
-    var num_display = 20;
-    num_display = Math.min(num_display, result.length);
+    var num_display = 10;
+    num_display = Math.min(num_display, result.length, 10);
     for (var i = 0; i < num_display; i++) {
         keywords += convert_word_to_link(result[i][0]);
         frequency += convert_word_to_element(result[i][1]);
@@ -48,7 +50,8 @@ function update_analyze_result(result){
 }
 
 document.getElementById("analyzeButton").onclick = function() {
-    var result = analyze(document.getElementById("textBox").innerHTML);
+    console.log("analyzeButton clicked");
+    var result = analyze(document.getElementById("textBox").value);
     update_analyze_result(result);
 }
 
