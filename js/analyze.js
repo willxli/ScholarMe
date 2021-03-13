@@ -7,7 +7,6 @@ function analyze(text) {
         return [];
     }
 
-    // TODO: add a stop words list
     var result = words.reduce(function(count, curr_word) {
         if (curr_word in count) {
             count[curr_word] = count[curr_word] + 1;
