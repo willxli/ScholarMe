@@ -40,8 +40,9 @@ function update_analyze_result(result){
     var frequency = "";
     // TODO: we can have the user to set the number of words to be displayed
     var init_num_display = 10;
+    var init_upper_bound = 10;
     var result_len = result.length;
-    var num_display = Math.min(init_num_display, result_len, 10);
+    var num_display = Math.min(init_num_display, result_len, init_upper_bound);
     stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
     for (var i = 0; i < num_display; i++) {
         if (!stopwords.includes(result[i][0].toLowerCase())) {
@@ -49,7 +50,8 @@ function update_analyze_result(result){
             frequency += convert_word_to_element(result[i][1]);
         }else{
             init_num_display++;
-            num_display = Math.min(init_num_display, result_len, 10);
+            init_upper_bound++;
+            num_display = Math.min(init_num_display, result_len, init_upper_bound);
         }
     }
     document.getElementById("keywords").innerHTML = keywords;
