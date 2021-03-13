@@ -1,6 +1,40 @@
 .buttons {
     width: 100px;
-    height: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
+    height: 85px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#analyzeButton {
+    color: green;
+}
+
+#resetButton {
+    color: red;
+    margin-left: 100px;
+}
+
+#uploadButton {
+    color: blue;
+    margin-left: 100px;
+    padding-top: -100px;
+}
+
+.box {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.secondBox {
+    margin-left: 565px;
+    margin-top: -800px;
+}
+
+#frequency {
+    margin-top: -406px;
+    margin-left: 215px;
+}
+
+.but {
+    margin-top: 250px;
 }
