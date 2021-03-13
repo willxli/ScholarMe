@@ -1,5 +1,6 @@
 function analyze(text) {
     var words = text.match(/\w+/g);
+    // TODO: add a stop words list
     var result = words.reduce(function(count, curr_word) {
         if (curr_word in count) {
             count[curr_word] = count[curr_word] + 1;
@@ -25,12 +26,13 @@ function convert_word_to_link(keyword){
 function update_analyze_result(result){
     var keywords = "";
     var frequency = "";
-    result.forEach(element => {
-        keywords += convert_word_to_link(element[0]);
+    // TODO: we can have the user to set the number of words to be displayed
+    for (var i = 0; i < 20; i++) {
+        keywords += convert_word_to_link(result[i][0]);
         keywords += "\n";
-        frequency += element[1];
+        frequency += result[i][1];
         frequency += "\n";
-    });
+    }
     document.getElementById("keywords").value = keywords;
     document.getElementById("frequency").value = frequency;
 }
