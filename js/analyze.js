@@ -48,7 +48,7 @@ function update_analyze_result(result){
 }
 
 document.getElementById("analyzeButton").onclick = function() {
-    var result = analyze(document.getElementById("textBox").value);
+    var result = analyze(document.getElementById("textBox").innerHTML);
     update_analyze_result(result);
 }
 
