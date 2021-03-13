@@ -9,17 +9,27 @@
         <form> 
             <input type = "text" style = "height:800px; width:500px;" placeholder = "Please paste your text here" maxlength="5000" id = "textBox">
         </form>
-        <button type="button" class="buttons" id = "analyzeButton">analyze</button>
-        <button type="button" class="buttons" id = "resetButton">reset</button>
-        <button type="button" class="buttons" id = "uploadButton">upload (docx, txt, pdf)</button>
+        <div>
+            <button type="button" class="buttons" id = "analyzeButton">analyze</button>
+            <button type="button" class="buttons" id = "resetButton">reset</button>
+            <button type="button" class="buttons" id = "uploadButton">upload (docx, txt, pdf)</button>
+        </div>
 
-        <h3>
-            Keywords:
-        </h3>
-    
-        <h3>
-            Keyword Searching!
-        </h3>
+        <div>
+            <div>
+                <h3>
+                    Keywords:
+                </h3>
+                <div id="keywords">
+                </div>
+                <div id="frequency">
+                </div>
+            </div>
+        
+            <h3>
+                Keyword Searching!
+            </h3>
+        </div>
 
         <form> 
             <input type = "text" style = "height:25px; width:200px;" placeholder = "Enter your keyword here" maxlength="250">

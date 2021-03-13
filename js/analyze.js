@@ -5,7 +5,7 @@ function analyze(text) {
     if (words.length === 0) {
         return [];
     }
-    
+
     // TODO: add a stop words list
     var result = words.reduce(function(count, curr_word) {
         if (curr_word in count) {
@@ -26,7 +26,11 @@ function analyze(text) {
 }
 
 function convert_word_to_link(keyword){
-    return "<a href=\"https://scholar.google.com/scholar?as_sdt=0%2C5&q="+ keyword + "&btnG=\">" + keyword + "</a>";
+    return convert_word_to_element("<a href=\"https://scholar.google.com/scholar?as_sdt=0%2C5&q="+ keyword + "&btnG=\" target=\"_blank\">" + keyword + "</a>");
+}
+
+function convert_word_to_element(word){
+    return "<p>" + word + "</p>";
 }
 
 function update_analyze_result(result){
@@ -37,12 +41,10 @@ function update_analyze_result(result){
     num_display = Math.min(num_display, result.length);
     for (var i = 0; i < num_display; i++) {
         keywords += convert_word_to_link(result[i][0]);
-        keywords += "\n";
-        frequency += result[i][1];
-        frequency += "\n";
+        frequency += convert_word_to_element(result[i][1]);
     }
-    document.getElementById("keywords").value = keywords;
-    document.getElementById("frequency").value = frequency;
+    document.getElementById("keywords").innerHTML = keywords;
+    document.getElementById("frequency").innerHTML = frequency;
 }
 
 document.getElementById("analyzeButton").onclick = function() {
