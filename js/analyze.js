@@ -30,7 +30,7 @@ function convert_word_to_link(keyword){
 }
 
 function convert_word_to_element(word){
-    return "<p>" + word + "</p>";
+    return "<div>" + word + "</div>";
 }
 
 function update_analyze_result(result){
