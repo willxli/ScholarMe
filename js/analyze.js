@@ -102,3 +102,14 @@ document.getElementById("resetButton").onclick = function() {
     document.getElementById("textBox").value = "";
     update_analyze_result([]);
 }
+
+document.getElementById("keywordSearchBar").addEventListener("keydown", function(event) {
+    let input = document.getElementById("keywordSearchBar")
+    if(event.key == "Enter") {
+        event.preventDefault();
+        let queryToken = String(input.value).split(" ").join("+");
+        var elt = wrap_word_with_link(String(input.value), queryToken);
+        document.getElementById("keywords").innerHTML += convert_word_to_element(elt);
+        document.getElementById("frequency").innerHTML += "<div>temp</div>"
+    }
+});
