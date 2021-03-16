@@ -1,8 +1,8 @@
-function analyze(text) {
+function analyze(text, pattern = /\w+/g) {
     console.log("analyze");
     if(!text) return [];
 
-    var words = text.match(/\w+/g);
+    var words = text.match(pattern);
     if (words.length === 0) {
         return [];
     }
@@ -104,12 +104,18 @@ document.getElementById("resetButton").onclick = function() {
 }
 
 document.getElementById("keywordSearchBar").addEventListener("keydown", function(event) {
-    let input = document.getElementById("keywordSearchBar")
     if(event.key == "Enter") {
         event.preventDefault();
-        let queryToken = String(input.value).split(" ").join("+");
-        var elt = wrap_word_with_link(String(input.value), queryToken);
+        var input = document.getElementById("keywordSearchBar");
+        var word = String(input.value);
+        var result = analyze(word, new RegExp(word, 'g'));
+        var queryToken = word.split(" ").join("+");
+        var elt = wrap_word_with_link(word, queryToken);
         document.getElementById("keywords").innerHTML += convert_word_to_element(elt);
-        document.getElementById("frequency").innerHTML += "<div>temp</div>"
+        if (result.length === 0) {
+            document.getElementById("frequency").innerHTML += convert_word_to_element("0");
+        } else {
+            document.getElementById("frequency").innerHTML += convert_word_to_element(result[0][1]);
+        }
     }
 });
