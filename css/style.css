@@ -2,11 +2,10 @@
     width: 100px;
     height: 85px;
     margin-left: 15px;
-    margin-top: 15px;
+    margin-top: 55px;
 }
 
 #analyzeButton {
-    color: green;
     border-radius: 25px;
 }
 
