@@ -40,3 +40,7 @@
 .but {
     margin-top: 250px;
 }
+
+#keywordSearchBar {
+    outline: none;
+}
