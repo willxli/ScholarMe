@@ -117,5 +117,6 @@ document.getElementById("keywordSearchBar").addEventListener("keydown", function
         } else {
             document.getElementById("frequency").innerHTML += convert_word_to_element(result[0][1]);
         }
+        event.currentTarget.value = '';
     }
 });
