@@ -3,24 +3,22 @@
     height: 85px;
     margin-left: 15px;
     margin-top: 55px;
+    border-radius: 25px;
 }
 
 #analyzeButton {
-    border-radius: 25px;
+    color: black;
 }
 
 #resetButton {
     color: red;
     margin-left: 100px;
-    border-radius: 25px;
-    
 }
 
 #uploadButton {
     color: blue;
     margin-left: 100px;
     padding-top: -100px;
-    border-radius: 25px;
 }
 
 .box {
