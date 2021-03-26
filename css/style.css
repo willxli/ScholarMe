@@ -2,7 +2,6 @@
     width: 100px;
     height: 85px;
     margin-left: 15px;
-    margin-top: 55px;
     border-radius: 25px;
 }
 
@@ -37,7 +36,7 @@
 }
 
 .but {
-    margin-top: 250px;
+    margin-top: 70px;
 }
 
 #keywordSearchBar {
