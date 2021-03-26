@@ -44,3 +44,16 @@
 #keywordSearchBar {
     outline: none;
 }
+
+#textBox {
+    height:775px; 
+    width:500px; 
+    border-radius: 5px; 
+    padding-left : 6px;
+
+    /* fix for resizing textarea */
+    min-height: 775px;
+    max-width: 500px;
+    min-width: 294px;
+    
+}
