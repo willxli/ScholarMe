@@ -1,4 +1,4 @@
-document.getElementById("uploadButton").onclick = function() {
+document.getElementById("uploadButton").onchange = function() {
     console.log("Uploading...")
     var file = document.getElementById("uploadButton").files[0];
     var extension = file.name.substring(file.name.lastIndexOf('.')); console.log(extension);
