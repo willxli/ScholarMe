@@ -1,5 +1,4 @@
 var top_n_words = []; // Declared globally to give manually entered words proper priority.
-var manual_words = "";
 var words_displayed = [];
 
 function analyze(text, pattern = /\w+/g) {
@@ -113,7 +112,6 @@ document.getElementById("analyzeButton").onclick = function() {
 
 document.getElementById("resetButton").onclick = function() {
     document.getElementById("textBox").value = "";
-    manual_words = "";
     update_analyze_result([]);
 }
 
