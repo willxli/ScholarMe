@@ -1,5 +1,6 @@
 var top_n_words = []; // Declared globally to give manually entered words proper priority.
 var words_displayed = [];
+var stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
 
 function analyze(text, pattern = /\w+/g) {
     console.log("analyze");
@@ -22,17 +23,20 @@ function analyze(text, pattern = /\w+/g) {
 
     var keys_list = Object.keys(result);
     keys_list.forEach(curr_word => {
-        if (keys_list.includes(curr_word.slice(0, -3))) {
-            result[curr_word.slice(0, -3)] += result[curr_word];
-            delete result[curr_word];
-        }
-        else if (keys_list.includes(curr_word.slice(0, -2))) {
-            result[curr_word.slice(0, -2)] += result[curr_word];
-            delete result[curr_word];
-        }
-        else if (keys_list.includes(curr_word.slice(0, -1))) {
-            result[curr_word.slice(0, -1)] += result[curr_word];
-            delete result[curr_word];
+        var curr_word_last_c = curr_word.slice(-1);
+        if (curr_word_last_c === "s" || curr_word_last_c === "d" || curr_word_last_c === "y") {
+            if (keys_list.includes(curr_word.slice(0, -3))) {
+                result[curr_word.slice(0, -3)] += result[curr_word];
+                delete result[curr_word];
+            }
+            else if (keys_list.includes(curr_word.slice(0, -2))) {
+                result[curr_word.slice(0, -2)] += result[curr_word];
+                delete result[curr_word];
+            }
+            else if (keys_list.includes(curr_word.slice(0, -1))) {
+                result[curr_word.slice(0, -1)] += result[curr_word];
+                delete result[curr_word];
+            }
         }
     });
 
@@ -69,8 +73,6 @@ function update_analyze_result(result){
     // TODO: we can have the user to set the number of words to be auto searched
     var init_top_n = 3;
     var top_n = init_top_n;
-    
-    var stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
     
     top_n_words = [];
     words_displayed = [];
