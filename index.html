@@ -6,26 +6,29 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css">
     </head>
     <body>
-        <div class = "box">
-            <form> 
-                <textarea type = "text" placeholder = "Please paste your text here" maxlength="5000" id = "textBox"></textarea>
-            </form>
-
+        <div class = "body_div">
+            <div class = "box">
+                <div>
+                    <form> 
+                        <textarea type = "text" placeholder = "Please paste your text here" maxlength="5000" id = "textBox"></textarea>
+                    </form>
+                    <div class = "but">
+                        <button type="button" class = "buttons" id = "analyzeButton">analyze</button>
+                        <button type="button" class = "buttons" id = "resetButton">reset</button>
+                        <button type="button" class = "buttons" id = "uploadButton">upload (.txt)</button>
+                        <input type="file" id = "uploadInput" hidden>
+                    </div>
+                </div>
+            </div>
             <div class = "secondBox">
                 <div><h3 id="keywords_title">Keywords:</h3></div>
                 <div>
-                    <div class ="keywords">
-                        <form> 
-                            <div id = "keywords" style = "height:400px; width:200px;" maxlength="250"></div>
-                        </form>
-                    </div>
-                    <div class ="frequency">
-                        <form> 
-                            <div id = "frequency" style = "height:400px; width:200px;" maxlength="250"></div>
-                        </form>
-                    </div>
+                    <form> 
+                        <div id = "keywords_div" style = "height:auto; width:200px;" maxlength="250">
+                        </div>
+                    </form>
                 </div>
-                
+
                 <h3>
                     Keyword Searching!
                 </h3>
@@ -39,13 +42,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-        <div class = "but">
-            <button type="button" class = "buttons" id = "analyzeButton">analyze</button>
-            <button type="button" class = "buttons" id = "resetButton">reset</button>
-            <button type="button" class = "buttons" id = "uploadButton">upload (.txt)</button>
-            <input type="file" id = "uploadInput" hidden>
         </div>
 
     </body>

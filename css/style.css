@@ -20,19 +20,15 @@
     padding-top: -100px;
 }
 
-.box {
+.body_div {
+    display: flex;
     margin-left: 15px;
+    width: 80%;
+}
+
+.box, .secondBox {
     margin-top: 15px;
-}
-
-.secondBox {
-    margin-left: 565px;
-    margin-top: -800px;
-}
-
-.frequency {
-    margin-top: -406px;
-    margin-left: 215px;
+    width: 50%;
 }
 
 .but {
@@ -45,13 +41,25 @@
 
 #textBox {
     height:775px; 
-    width:500px; 
+    width:80%; 
     border-radius: 5px; 
     padding-left : 6px;
 
     /* fix for resizing textarea */
     min-height: 775px;
-    max-width: 500px;
-    min-width: 294px;
+    max-width: 80%;
+    min-width: 20%;
     
+}
+
+.keyword {
+    display: flex;
+    text-align:center;
+    width:500px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.word, .freq {
+    width: 50%;
+    overflow-wrap: anywhere;
 }

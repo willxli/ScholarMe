@@ -49,12 +49,12 @@ function wrap_word_with_link(display_word, search_word){
     return "<a href=\"https://scholar.google.com/scholar?as_sdt=0%2C5&q="+ search_word + "&btnG=\" target=\"_blank\">" + display_word + "</a>";
 }
 
-function convert_word_to_link(keyword){
-    return convert_word_to_element(wrap_word_with_link(keyword, keyword));
+function convert_word_to_link(keyword, cls="word"){
+    return convert_word_to_element(wrap_word_with_link(keyword, keyword), cls);
 }
 
-function convert_word_to_element(word){
-    return "<div>" + word + "</div>";
+function convert_word_to_element(word, cls){
+    return "<div class=\"" + cls + "\">" + word + "</div>";
 }
 
 function update_analyze_result(result){
@@ -74,8 +74,8 @@ function update_analyze_result(result){
     
     for (var i = 0; i < num_display; i++) {
         if (isNaN(result[i][0]) && isNaN(parseFloat(result[i][0])) && !stopwords.includes(result[i][0]) && result[i][0].length > 1) {
-            keywords += convert_word_to_link(result[i][0]);
-            frequency += convert_word_to_element(result[i][1]);
+            word = convert_word_to_link(result[i][0]) + convert_word_to_element(result[i][1], "freq");
+            keywords += convert_word_to_element(word, "keyword");
             if(top_n > 0){
                 top_n_words += result[i][0] + "+";
                 top_n--;
@@ -87,9 +87,8 @@ function update_analyze_result(result){
         }
     }
     
-    
-    document.getElementById("keywords").innerHTML = keywords;
-    document.getElementById("frequency").innerHTML = frequency;
+    console.log(keywords)
+    document.getElementById("keywords_div").innerHTML = keywords;
     if(top_n !== init_top_n){
         top_n_words = top_n_words.slice(0, -1);
         document.getElementById("keywords_title").innerHTML = "Keywords: " + wrap_word_with_link("(auto search)", top_n_words);
