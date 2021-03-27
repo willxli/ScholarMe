@@ -1,3 +1,6 @@
+var top_n_words = ""; // Declared globally to give manually entered words proper priority.
+var manual_words = "";
+
 function analyze(text, pattern = /\w+/g) {
     console.log("analyze");
     if(!text) return [];
@@ -66,10 +69,11 @@ function update_analyze_result(result){
     // TODO: we can have the user to set the number of words to be auto searched
     var init_top_n = 3;
     var top_n = init_top_n;
-    var top_n_words = "";
+    
     stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
+    
     for (var i = 0; i < num_display; i++) {
-        if (isNaN(result[i][0]) && isNaN(parseFloat(result[i][0])) && !stopwords.includes(result[i][0])) {
+        if (isNaN(result[i][0]) && isNaN(parseFloat(result[i][0])) && !stopwords.includes(result[i][0]) && result[i][0].length > 1) {
             keywords += convert_word_to_link(result[i][0]);
             frequency += convert_word_to_element(result[i][1]);
             if(top_n > 0){
@@ -82,6 +86,8 @@ function update_analyze_result(result){
             num_display = Math.min(init_num_display, result_len, init_upper_bound);
         }
     }
+    
+    
     document.getElementById("keywords").innerHTML = keywords;
     document.getElementById("frequency").innerHTML = frequency;
     if(top_n !== init_top_n){
@@ -100,6 +106,7 @@ document.getElementById("analyzeButton").onclick = function() {
 
 document.getElementById("resetButton").onclick = function() {
     document.getElementById("textBox").value = "";
+    manual_words = "";
     update_analyze_result([]);
 }
 
@@ -108,15 +115,19 @@ document.getElementById("keywordSearchBar").addEventListener("keydown", function
         event.preventDefault();
         var input = document.getElementById("keywordSearchBar");
         var word = String(input.value);
-        var result = analyze(word, new RegExp(word, 'g'));
-        var queryToken = word.split(" ").join("+");
-        var elt = wrap_word_with_link(word, queryToken);
-        document.getElementById("keywords").innerHTML += convert_word_to_element(elt);
-        if (result.length === 0) {
-            document.getElementById("frequency").innerHTML += convert_word_to_element("0");
-        } else {
-            document.getElementById("frequency").innerHTML += convert_word_to_element(result[0][1]);
+        
+        // Add manually entered keyword if it isn't already in keyword list
+        if (top_n_words.includes(word) == false)
+        {
+            var result = analyze(word, new RegExp(word, 'g'));
+            var queryToken = word.split(" ").join("+");
+            var elt = wrap_word_with_link(word, queryToken);
+            document.getElementById("keywords").innerHTML += convert_word_to_element(elt);
+            document.getElementById("frequency").innerHTML += ("<div> <i> manual </i> </div>");
+            manual_words += " " + word;
+            document.getElementById("keywords_title").innerHTML = "Keywords: " + wrap_word_with_link("(auto search)", top_n_words + manual_words);
         }
+        
         event.currentTarget.value = '';
     }
 });
