@@ -2,6 +2,9 @@ var top_n_words = []; // Declared globally to give manually entered words proper
 var words_displayed = [];
 var stopwords = ['i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
 
+var text_area = document.getElementById("textBox");
+var text_block = null;
+var input_text = "";
 
 // Porter stemmer in Javascript. Few comments, but it's easy to follow against the rules in the original
 // paper, in
@@ -199,7 +202,7 @@ function analyze(text, pattern = /\w+/g) {
     if(!text) return [];
 
     var words = text.match(pattern);
-    if (words.length === 0) {
+    if (words === null || words.length === 0) {
         return [];
     }
 
@@ -301,15 +304,49 @@ function update_analyze_result(result){
     }
 }
 
+function reset_variables() {
+	top_n_words = [];
+	words_displayed = [];
+	input_text = "";
+	text_block = null;
+    update_analyze_result([]);
+}
+
+function enable_edit() {
+	text_area.value = input_text;
+	document.getElementById("textBox").replaceWith(text_area);
+}
+
+function disable_edit() {
+	if (input_text !== text_area.value){
+		reset_variables();
+	}
+
+	text_block = document.createElement("div");
+	text_block.id = "textBox";
+	input_text = text_area.value;
+	text_block.innerHTML = input_text;
+	text_block.style = "background-color:WhiteSmoke";
+
+	text_block.onclick = function() {
+		enable_edit();
+	};
+
+	document.getElementById("textBox").replaceWith(text_block);
+}
+
 document.getElementById("analyzeButton").onclick = function() {
     console.log("analyzeButton clicked");
-    var result = analyze(document.getElementById("textBox").value);
+	disable_edit();
+    var result = analyze(input_text);
     update_analyze_result(result);
 }
 
+
+
 document.getElementById("resetButton").onclick = function() {
-    document.getElementById("textBox").value = "";
-    update_analyze_result([]);
+	reset_variables();
+	enable_edit();
 }
 
 document.getElementById("keywordSearchBar").addEventListener("keydown", function(event) {
@@ -317,12 +354,20 @@ document.getElementById("keywordSearchBar").addEventListener("keydown", function
         event.preventDefault();
         var input = document.getElementById("keywordSearchBar");
         var word = String(input.value);
+		
+		disable_edit();
+
+		pattern = new RegExp("\\b" + word + "\\b", 'g');
+		text_block.innerHTML = input_text.replace(pattern, "<span style=\"background-color:yellow\">" + word + "</span>");
         
         // Add manually entered keyword if it isn't already in keyword list
         if (words_displayed.includes(word) == false)
         {
             words_displayed.push(word);
-            var result = analyze(word, new RegExp(word, 'g'));
+            var result = analyze(input_text, pattern);
+			if (result === []) {
+				return;
+			}
             var queryToken = word.split(" ").join("+");
             var elt = wrap_word_with_link(word, queryToken);
             console.log(elt);

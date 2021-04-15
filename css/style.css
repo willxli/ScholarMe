@@ -50,6 +50,7 @@
     max-width: 80%;
     min-width: 20%;
     
+    border: 1px solid black;
 }
 
 .keyword {
