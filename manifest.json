@@ -15,5 +15,8 @@
   },
   "background": {
     "page": "html/background.html"
+  },
+  "icons": {
+    "16": "img/icon.png"
   }
 }
