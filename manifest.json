@@ -7,7 +7,8 @@
 
   "permissions": [
     "tabs",
-    "fileBrowserHandler"
+    "fileBrowserHandler",
+    "contextMenus"
   ],
   "browser_action": {
     "default_icon": "img/icon.png"
