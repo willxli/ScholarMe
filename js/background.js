@@ -8,7 +8,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 chrome.contextMenus.create({
   "title": "ScholarMe",
   "contexts": ["selection"],
-  onclick:function(tab)
+  onclick:function()
   {
   chrome.tabs.create({
     'url': chrome.extension.getURL('../index.html')});
