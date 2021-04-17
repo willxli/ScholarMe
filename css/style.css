@@ -1,29 +1,79 @@
+.top_bar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+body {
+    margin-left: 0;
+    background-color: gainsboro;
+}
+
+.top_bar a {
+    float: left;
+    display: block;
+    color: gainsboro;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+    font-family: 'Handlee', cursive;
+    size: 20px;
+}
+
+#grad-cap {
+    color: burlywood;
+}
+
 .buttons {
     width: 100px;
     height: 85px;
-    margin-left: 15px;
     border-radius: 25px;
+    outline: none;
+    border: none;
+    transition-duration: 0.4s;
 }
 
 #analyzeButton {
+    color:green;
+    background-color: white;
+    margin-right: 30px;
+}
+
+#analyzeButton:hover {
+    background-color:honeydew;
     color: black;
 }
 
 #resetButton {
     color: red;
-    margin-left: 100px;
+    background-color: white;
+    margin-right: 30px;
+}
+
+#resetButton:hover {
+    background-color:mistyrose;
+    color: black;
 }
 
 #uploadButton {
     color: blue;
-    margin-left: 100px;
-    padding-top: -100px;
+    background-color: white;
+    position: absolute;
+    margin-right: 30px;
+}
+
+#uploadButton:hover {
+    background-color: aliceblue;
+    color: black;
 }
 
 .body_div {
     display: flex;
     margin-left: 15px;
     width: 80%;
+    margin-top: 60px;
 }
 
 .box, .secondBox {
@@ -32,25 +82,28 @@
 }
 
 .but {
-    margin-top: 70px;
+    margin-top: 30px;
 }
 
 #keywordSearchBar {
     outline: none;
+    border: none;
 }
 
 #textBox {
-    height:775px; 
+    height:500px; 
     width:80%; 
     border-radius: 5px; 
     padding-left : 6px;
 
     /* fix for resizing textarea */
-    min-height: 775px;
+    min-height: 500px;
     max-width: 80%;
     min-width: 20%;
     
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: none;
+    outline: none;
 }
 
 .keyword {
