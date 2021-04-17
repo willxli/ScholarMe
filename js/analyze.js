@@ -6,6 +6,15 @@ var text_area = document.getElementById("textBox");
 var text_block = null;
 var input_text = "";
 
+{
+	const urlParams = new URLSearchParams(window.location.search);
+	if (urlParams.has("text")) {
+		console.log("found parameter \"text\"");
+		input_text = urlParams.get("text");
+		text_area.value = input_text;
+	}
+}
+
 // Porter stemmer in Javascript. Few comments, but it's easy to follow against the rules in the original
 // paper, in
 //
