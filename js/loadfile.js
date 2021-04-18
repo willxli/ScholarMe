@@ -1,5 +1,21 @@
 var JSON_UPLOAD_TARGET_KEY = "TNGSGS_target";
 
+// https://stackoverflow.com/questions/1703228/how-can-i-clear-an-html-file-input-with-javascript/16222877
+function clearInputFile(f){
+    if(f.value){
+        try{
+            f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+        }catch(err){ }
+        if(f.value){ //for IE5 ~ IE10
+            var form = document.createElement('form'),
+                parentNode = f.parentNode, ref = f.nextSibling;
+            form.appendChild(f);
+            form.reset();
+            parentNode.insertBefore(f,ref);
+        }
+    }
+}
+
 document.getElementById("uploadButton").onclick = function() {
     document.getElementById("uploadInput").click();
 }
@@ -40,8 +56,10 @@ document.getElementById("uploadInput").onchange = function() {
     }
     else {
         alert("Please select valid file type. The supported file types are .txt, .json");
+        clearInputFile(document.getElementById("uploadInput"));
         return false;
     }
     document.getElementById("upload").innerHTML += file.name;
+    clearInputFile(document.getElementById("uploadInput"));
     return true;
 }
