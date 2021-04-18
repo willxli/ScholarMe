@@ -59,7 +59,7 @@ document.getElementById("uploadInput").onchange = function() {
         clearInputFile(document.getElementById("uploadInput"));
         return false;
     }
-    document.getElementById("upload").innerHTML += file.name;
+    document.getElementById("upload").innerHTML = file.name;
     clearInputFile(document.getElementById("uploadInput"));
     return true;
 }

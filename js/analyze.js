@@ -355,6 +355,7 @@ document.getElementById("analyzeButton").onclick = function() {
 
 document.getElementById("resetButton").onclick = function() {
 	reset_variables();
+	document.getElementById("upload").innerHTML = "";
 	enable_edit();
 }
 
