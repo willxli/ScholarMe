@@ -17,8 +17,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://willxli.github.io/ScholarMe/",
   "bugs": {
     "url": "https://github.com/willxli/ScholarMe/issues"
-  }
+  },
+  "homepage": "https://willxli.github.io/ScholarMe/"
 }
