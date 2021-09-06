@@ -1,11 +1,24 @@
 {
-    "homepage": "https://{willxli}.github.io/{ScholarMe}",
-    "scripts": {
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
-        "build": "echo build script executed"
-    },
-    "devDependencies": {
-        "gh-pages": "^3.2.3"
-    }
+  "name": "ScholarMe",
+  "version": "1.0.0",
+  "description": "The Non-Google Scholar Google Scholar",
+  "main": "index.js",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willxli/ScholarMe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willxli/ScholarMe/issues"
+  },
+  "homepage": "https://github.com/willxli/ScholarMe#readme"
 }
