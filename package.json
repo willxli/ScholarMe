@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://willxli.github.io/ScholarMe/",
   "bugs": {
     "url": "https://github.com/willxli/ScholarMe/issues"
-  },
-  "homepage": "https://github.com/willxli/ScholarMe#readme"
+  }
 }
